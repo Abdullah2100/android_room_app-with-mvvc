@@ -19,6 +19,5 @@ data class entitity (
 
 
      var job:String,
-     var profileImage: Bitmap
 
 ): Parcelable

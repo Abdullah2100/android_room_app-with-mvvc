@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 
 class BlankFragmentAddUser : Fragment() {
     private lateinit var userViewMoldee: UserViewModle
-    private lateinit var imageloder:ImageLoader
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,10 +47,8 @@ class BlankFragmentAddUser : Fragment() {
         var job=view?.findViewById<EditText>(R.id.jobid)!!.text.toString()
 
            if(checikInput(name,job)){
-               val user= entitity(0,name,job)
-              LifecycleCoroutineScope.launch {
-                  val user= entitity(0,name,job,g)
-              }
+             val user= entitity(id = 0,name = name,job = job)
+               userViewMoldee.addUser(user = user)
                Toast.makeText(requireContext(),"the add was seccesfoly", Toast.LENGTH_LONG).show()
               findNavController().navigate(R.id.action_blankFragmentAddUser_to_displayUser)
            }
@@ -65,7 +63,5 @@ class BlankFragmentAddUser : Fragment() {
     private fun checikInput(name:String,job:String):Boolean{
         return !(TextUtils.isEmpty(name) && TextUtils.isEmpty(job))
     }
-    private suspend fun getBit():BitMap{
-        val loading=Image
-    }
+
 }
